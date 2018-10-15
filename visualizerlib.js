@@ -67,6 +67,12 @@ Animator.prototype.cancel = function() {
 	this._syncArrays();
 }
 
+Animator.prototype.setDelay = function(delay) {
+	clearInterval(this._id);
+	var _this = this;
+	this._id = window.setInterval(function() {_this._update();}, delay);
+}
+
 Animator.prototype.compare = function(i, j) {
 	// returns true if a[i] is greater than a[j] and enqueues a compare action
 	this._queue.push(["compare", i, j]);
