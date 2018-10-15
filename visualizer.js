@@ -56,7 +56,7 @@ async function setup() {
 	await sleep(500);
 	await shuffle(values);
 	await sleep(500);
-	await bubbleSort(values);
+	await selectionSort(values);
 }
 
 function drawArray(a) {
@@ -118,7 +118,7 @@ async function swap(a, i, j, delay=0) {
 		await sleep(delay);
 	}
 	else {
-		await fastSleep(delay);
+		await sleep(delay);
 	}
 }
 
