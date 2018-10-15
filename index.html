@@ -12,13 +12,13 @@
 		</div>
 		<div class="row">
 
-			<div id="canvas-holder" class="column">
+			<div id="canvas-holder" style="width:1000px;padding:10px;">
 				<script src="visualizerlib.js"></script>
 				<script src="p5.js"></script>
 				<script src="visualizer.js"></script>
 			</div> 
 
-			<div class="column">
+			<div style="flex-grow:1;">
 				<p style="width:20%;">Array Length: </p><input type="number" id="lengthTextbox" value="50"></input>
 				<button id="lengthButton" onclick="updateArrayLength()">Update</button>
 				Length must be [1, 1000]. Will get very slow at high values! <br/>
