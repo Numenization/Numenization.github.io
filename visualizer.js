@@ -68,3 +68,13 @@ function selectionSortEvent() {
 	animator.cancel();
 	selectionSort(animator.getArray(), animator);
 }
+
+function quickSortEvent() {
+	animator.cancel();
+	quickSort(animator.getArray(), animator, 0, animator.getArray().length - 1);
+}
+
+function heapSortEvent() {
+	animator.cancel();
+	heapSort(animator.getArray(), animator);
+}

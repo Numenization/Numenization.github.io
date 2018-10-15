@@ -79,6 +79,16 @@ Animator.prototype.compare = function(i, j) {
 	return (this._array[i] > this._array[j]);
 }
 
+Animator.prototype.lessThanEqualTo = function(i, j) {
+	this._queue.push(["compare", i, j]);
+	return (this._array[i] <= this._array[j]);
+}
+
+Animator.prototype.lessThan = function(i, j) {
+	this._queue.push(["compare", i, j]);
+	return (this._array[i] < this._array[j]);
+}
+
 Animator.prototype.swap = function(i, j) {
 	// swaps two numbers in the array and enqueues a swap action
 	this._queue.push(["swap", i, j]);
@@ -133,5 +143,58 @@ function selectionSort(arr, animator) {
 			}
 		}
 		animator.swap(i, min);
+	}
+}
+
+function partition(arr, animator, low, high) {
+	var pivot = Math.round((low + high) / 2);
+	animator.swap(pivot, high);
+	pivot = low;
+	for(var i = low; i < high; i++) {
+		if(animator.lessThan(i, high)) {
+			if(i != pivot) {
+				animator.swap(i, pivot);
+			}
+			pivot++;
+		}
+	}
+
+	animator.swap(high, pivot);
+	return pivot;
+}
+
+function quickSort(arr, animator, low, high) {
+	if(low < high) {
+		var pivot = partition(arr, animator, low, high);
+
+		quickSort(animator.getArray(), animator, low, pivot - 1);
+		quickSort(animator.getArray(), animator, pivot + 1, high);
+	}
+}
+
+function heapify(arr, animator, n, rootNode) {
+	var largest = rootNode;
+	var l = 2 * rootNode + 1;
+	var r = 2 * rootNode + 2;
+
+	if(l < n && animator.lessThan(largest, l)) 
+		largest = l;
+
+	if(r < n && animator.lessThan(largest, r))
+		largest = r;
+
+	if(largest != rootNode) {
+		animator.swap(rootNode, largest);
+		heapify(arr, animator, n, largest);
+	}
+}
+
+function heapSort(arr, animator) {
+	var n = animator.getArray().length;
+	for(var i = n / 2 - 1; i >= 0; i--) 
+		heapify(animator.getArray(), animator, n, i);
+	for(var i = n - 1; i >= 0; i--) {
+		animator.swap(0, i);
+		heapify(animator.getArray(), animator, i, 0);
 	}
 }
