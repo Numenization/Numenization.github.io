@@ -48,7 +48,7 @@ function updateArrayLength() {
 
 function updateDelay() {
 	var input = document.getElementById("delayTextbox");
-	if(input.value > 0)
+	if(input.value < 0)
 		return;
 	delay = input.value;
 	animator.setDelay(delay);
