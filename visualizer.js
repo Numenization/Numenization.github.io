@@ -56,7 +56,7 @@ async function setup() {
 	await sleep(500);
 	await shuffle(values);
 	await sleep(500);
-	await quickSortStart(values, 5);
+	await bubbleSort(values, 5);
 }
 
 function drawArray(a) {
