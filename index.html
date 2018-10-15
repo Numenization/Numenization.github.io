@@ -10,13 +10,15 @@
 		<div class="header">
 			<h1>Sorting Visualizer by Nick Spencer</h1>
 		</div>
-		<div class="container">
-			<div class="left">
+		<div class="row">
+
+			<div id="canvas-holder" class="column">
 				<script src="visualizerlib.js"></script>
 				<script src="p5.js"></script>
 				<script src="visualizer.js"></script>
 			</div> 
-			<div class="right">
+
+			<div class="column">
 				<p style="width:20%;">Array Length: </p><input type="number" id="lengthTextbox" value="50"></input>
 				<button id="lengthButton" onclick="updateArrayLength()">Update</button>
 				Length must be [1, 1000]. Will get very slow at high values! <br/>
@@ -28,6 +30,7 @@
 				<button id="bubbleSortButton" onclick="bubbleSortEvent()">Bubble Sort</button>
 				<button id="selectionSortButton" onclick="selectionSortEvent()">Selection Sort</button>
 			</div>
+
 		</div>
 	</body>
 </html>

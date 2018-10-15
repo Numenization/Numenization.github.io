@@ -8,7 +8,8 @@ function setup() {
 	for(var i = 0; i < length; i++) {
 		list.push(i);
 	}
-	createCanvas(1000,800);
+	var canvas = createCanvas(1000,800);
+	canvas.parent("canvas-holder");
 	frameRate(fps);
 	animator = new Animator(list, delay);
 }

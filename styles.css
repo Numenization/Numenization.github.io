@@ -9,16 +9,12 @@ body {
 	height:50px;
 }
 
-.container {
-	width: 100%;
+.row {
+	display: flex;
+	align-items: flex-start;
 }
 
-.left {
-	width: 1025px;
-	float: left;
-}
-
-.right {
-	width: 895px;
-	float: right;
+.column {
+	flex: 1;
+	padding:10px;
 }
