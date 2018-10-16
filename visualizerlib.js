@@ -118,7 +118,7 @@ function shuffleList(a, delay=0) {
 
 function animatedShuffle(arr, animator) {
 	var j, i;
-    for (i = arr.length - 1; i > 0; i--) {
+    for (i = 0; i < arr.length - 1; i++) {
         j = Math.floor(Math.random() * (i + 1));
         animator.swap(i, j)
     }
@@ -191,7 +191,7 @@ function heapify(arr, animator, n, rootNode) {
 
 function heapSort(arr, animator) {
 	var n = animator.getArray().length;
-	for(var i = n / 2 - 1; i >= 0; i--) 
+	for(var i = Math.floor(n / 2) - 1; i >= 0; i--) 
 		heapify(animator.getArray(), animator, n, i);
 	for(var i = n - 1; i >= 0; i--) {
 		animator.swap(0, i);
