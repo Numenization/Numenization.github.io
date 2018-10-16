@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<link rel="stylesheet" href="styles.css">
+		<link rel="stylesheet" href="css/styles.css">
 		<title>Sorting Visualizer</title>
 	</head>
 	<body>
@@ -13,9 +13,9 @@
 		<div class="row">
 
 			<div id="canvas-holder" style="width:1000px;padding:10px;">
-				<script src="visualizerlib.js"></script>
-				<script src="p5.js"></script>
-				<script src="visualizer.js"></script>
+				<script src="js/visualizerlib.js"></script>
+				<script src="js/p5.js"></script>
+				<script src="js/visualizer.js"></script>
 			</div> 
 
 			<div style="flex-grow:1;">
@@ -29,6 +29,9 @@
 				<button id="shuffleButton" onclick="shuffleEvent()">Shuffle</button>
 				<button id="bubbleSortButton" onclick="bubbleSortEvent()">Bubble Sort</button>
 				<button id="selectionSortButton" onclick="selectionSortEvent()">Selection Sort</button>
+				<button id="insertionSortButton" onclick="insertionSortEvent()">Insertion Sort</button>
+				<button id="oddEvenSortButton" onclick="oddEvenSortEvent()">Odd Even Sort</button>
+				<button id="cocktailSortButton" onclick="cocktailSortEvent()">Cocktail Sort</button>
 				<button id="quickSortButton" onclick="quickSortEvent()">Quick Sort</button>
 				<button id="heapSortButton" onclick="heapSortEvent()">Heap Sort</button>
 			</div>
