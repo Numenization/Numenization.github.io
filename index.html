@@ -12,30 +12,40 @@
 		</div>
 		<div class="row">
 
-			<div id="canvas-holder" style="width:1000px;padding:10px;">
+			<div class="left" id="canvas-holder">
 				<script src="js/visualizerlib.js"></script>
 				<script src="js/p5.js"></script>
 				<script src="js/visualizer.js"></script>
 			</div> 
 
-			<div style="flex-grow:1;">
-				<p style="width:20%;">Array Length: </p><input type="number" id="lengthTextbox" value="50"></input>
+			<div class="right">
+				<p class="label-text">Array Length: </p><input type="number" id="lengthTextbox" value="50"></input>
 				<button id="lengthButton" onclick="updateArrayLength()">Update</button>
 				Length must be [1, 1000]. Will get very slow at high values! <br/>
-				<p style="width:20%;">Delay: </p><input type="number" id="delayTextbox" value="1"></input>
+				<p class="label-text">Delay: </p><input type="number" id="delayTextbox" value="1"></input>
 				<button id="delayButton" onclick="updateDelay()">Update</button>
 				Delay must be [0, inf). Delay is in milliseconds. <br/>
+				<select id="arrayRange">Array Range
+					<option value="incrementByOne" selected="selected">Increment by 1</option>
+					<option value="random">Random</option>
+				</select>
 				<hr/>
-				<button id="shuffleButton" onclick="shuffleEvent()">Shuffle</button>
-				<button id="bubbleSortButton" onclick="bubbleSortEvent()">Bubble Sort</button>
-				<button id="selectionSortButton" onclick="selectionSortEvent()">Selection Sort</button>
-				<button id="insertionSortButton" onclick="insertionSortEvent()">Insertion Sort</button>
-				<button id="oddEvenSortButton" onclick="oddEvenSortEvent()">Odd Even Sort</button>
-				<button id="cocktailSortButton" onclick="cocktailSortEvent()">Cocktail Sort</button>
-				<button id="quickSortButton" onclick="quickSortEvent()">Quick Sort</button>
-				<button id="heapSortButton" onclick="heapSortEvent()">Heap Sort</button>
+				<p class="label-text">Shuffle Mode: <select id="shuffleMode">
+					<option value="random" selected="selected">Random</option>
+					<option value="reverse">Reverse Order</option>
+				</select></p>
+				<p class="label-text">Sorting Algorithm: <select id="algorithm">
+					<option value="bubbleSort" selected="selected">Bubble Sort</option>
+					<option value="cocktailSort">Cocktail Sort</option>
+					<option value="oddEvenSort">Odd-Even Sort</option>
+					<option value="selectionSort">Selection Sort</option>
+					<option value="insertionSort">Insertion Sort</option>
+					<option value="heapSort">Heap Sort</option>
+					<option value="quickSort">Quick Sort</option>
+				</select></p>
+				<button id="sortButton" onclick="sortList()">Sort</button>
+				<button id="shuffleButton" onclick="shuffleList()">Shuffle</button>
 			</div>
-
 		</div>
 	</body>
 </html>

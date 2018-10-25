@@ -1,25 +1,24 @@
 var length = 50;
-const fps = 60;
+var fps = 60;
 var delay = 1;
 list = [];
 var animator = null;
 
 function setup() {
+	setFrameRate(fps);
 	for(var i = 0; i < length; i++) {
 		list.push(i);
 	}
 	var canvas = createCanvas(1000,800);
 	canvas.parent("canvas-holder");
-	frameRate(fps);
 	animator = new Animator(list, delay);
 }
 
 function draw() {
 	background('#222222');
-
 	var lineWidth = width / length;
 	var heightRatio = height / length;
-	if(length > 500) {
+	if(length > 300) {
 		strokeWeight(0);
 	}
 	else {
@@ -35,7 +34,7 @@ function draw() {
 
 function updateArrayLength() {
 	var input = document.getElementById("lengthTextbox");
-	if(input.value < 1 || input.value > 1000)
+	if(input.value < 1 && input.value > 1000)
 		return;
 	length = input.value;
 	animator.cancel();
@@ -54,42 +53,39 @@ function updateDelay() {
 	animator.setDelay(delay);
 }
 
-function shuffleEvent() {
+function sortList() {
+	var selectionList = document.getElementById("algorithm");
+	var value = selectionList[selectionList.selectedIndex].value;
 	animator.cancel();
-	animatedShuffle(animator);
+	if(value == "bubbleSort") {
+		bubbleSort(animator);
+	} else if(value === "cocktailSort") {
+		cocktailSort(animator);
+	} else if(value === "oddEvenSort") {
+		oddEvenSort(animator);
+	} else if(value === "selectionSort") {
+		selectionSort(animator);
+	} else if(value === "insertionSort") {
+		insertionSort(animator);
+	} else if(value === "heapSort") {
+		heapSort(animator);
+	} else if(value === "quickSort") {
+		quickSort(animator, 0, animator.getArray().length - 1);
+	} else {
+		console.log("Invalid sorting algorithm!");
+	}
 }
 
-function bubbleSortEvent() {
+function shuffleList() {
+	var selectionList = document.getElementById("shuffleMode");
+	var value = selectionList[selectionList.selectedIndex].value;
 	animator.cancel();
-	bubbleSort(animator);
-}
-
-function selectionSortEvent() {
-	animator.cancel();
-	selectionSort(animator);
-}
-
-function insertionSortEvent() {
-	animator.cancel();
-	insertionSort(animator);
-}
-
-function oddEvenSortEvent() {
-	animator.cancel();
-	oddEvenSort(animator);
-}
-
-function cocktailSortEvent() {
-	animator.cancel();
-	cocktailSort(animator);
-}
-
-function quickSortEvent() {
-	animator.cancel();
-	quickSort(animator, 0, animator.getArray().length - 1);
-}
-
-function heapSortEvent() {
-	animator.cancel();
-	heapSort(animator);
+	if(value === "random") {
+		animatedShuffle(animator);
+	} else if(value === "reverse") {
+		quickSort(animator, 0, animator.getArray().length - 1);
+		animatedFlip(animator);
+	} else {
+		console.log("Invalid shuffle method!");
+	}
 }

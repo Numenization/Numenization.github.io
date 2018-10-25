@@ -113,6 +113,13 @@ function animatedShuffle(animator) {
     }
 }
 
+function animatedFlip(animator) {
+	var n = animator.getArray().length;
+	for(var i = 0; i < Math.floor(n / 2); i++) {
+		animator.swap(i, n - i - 1);
+	}
+}
+
 function bubbleSort(animator) {
 	var n = animator.getArray().length;
 	for(var i = 0; i < n; i++) {
