@@ -105,6 +105,16 @@ Animator.prototype.getColors = function() {
 	return this._colors;
 }
 
+function checkSorted(animator) {
+	var n = animator.getArray().length;
+	for(var i = 0; i < n; i++) {
+		if(animator.lessThan(i + 1, i)) {
+			return false;
+		}
+	}
+	return true;
+}
+
 function animatedShuffle(animator) {
 	var n = animator.getArray().length;
     for (var i = 0; i < n; i++) {

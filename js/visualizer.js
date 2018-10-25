@@ -57,6 +57,8 @@ function sortList() {
 	var selectionList = document.getElementById("algorithm");
 	var value = selectionList[selectionList.selectedIndex].value;
 	animator.cancel();
+	if(checkSorted(animator))
+		return;
 	if(value == "bubbleSort") {
 		bubbleSort(animator);
 	} else if(value === "cocktailSort") {
@@ -83,7 +85,8 @@ function shuffleList() {
 	if(value === "random") {
 		animatedShuffle(animator);
 	} else if(value === "reverse") {
-		quickSort(animator, 0, animator.getArray().length - 1);
+		if(!checkSorted(animator))
+			quickSort(animator, 0, animator.getArray().length - 1);
 		animatedFlip(animator);
 	} else {
 		console.log("Invalid shuffle method!");
