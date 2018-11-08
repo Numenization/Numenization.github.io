@@ -22,13 +22,15 @@
 				<p class="label-text">Array Length: </p><input type="number" id="lengthTextbox" value="50"></input>
 				<button id="lengthButton" onclick="updateArrayLength()">Update</button>
 				Length must be [1, 1000]. Will get very slow at high values! <br/>
-				<p class="label-text">Delay: </p><input type="number" id="delayTextbox" value="1"></input>
+				<p class="label-text">Delay: <input type="number" id="delayTextbox" value="1"></input>
 				<button id="delayButton" onclick="updateDelay()">Update</button>
-				Delay must be [0, inf). Delay is in milliseconds. <br/>
+				Delay must be [0, inf). Delay is in milliseconds.</p>
 				<select id="arrayRange">Array Range
 					<option value="incrementByOne" selected="selected">Increment by 1</option>
 					<option value="random">Random</option>
+					<option value="quadratic">Quadratic</option>
 				</select>
+				<button id="rangeButton" onclick="updateRange()">Update</button>
 				<hr/>
 				<p class="label-text">Shuffle Mode: <select id="shuffleMode">
 					<option value="random" selected="selected">Random</option>
@@ -45,6 +47,8 @@
 				</select></p>
 				<button id="sortButton" onclick="sortList()">Sort</button>
 				<button id="shuffleButton" onclick="shuffleList()">Shuffle</button>
+				<p class="label-text">Last Sort Execution Time: 0s</p>
+				<p class="label-text">Last Sort Animation Time: 0s</p>
 			</div>
 		</div>
 	</body>

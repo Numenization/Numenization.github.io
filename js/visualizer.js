@@ -53,6 +53,34 @@ function updateDelay() {
 	animator.setDelay(delay);
 }
 
+function updateRange() {
+	var selectionList = document.getElementById("arrayRange");
+	var value = selectionList[selectionList.selectedIndex].value;
+	if(value === "incrementByOne") {
+		list = [];
+		for(var i = 0; i < length; i++) {
+			list.push(i);
+		}
+		animator = new Animator(list, delay);
+	} else if(value === "random") {
+		list = [];
+		for(var i = 0; i < length; i++) {
+			list.push(Math.random() * length);
+		}
+		animator = new Animator(list, delay);
+	} else if(value === "quadratic") {
+		list = [];
+		for(var i = 0; i < length; i++) {
+			var offset = Math.floor(length / 2);
+			var val = Math.pow(i - offset, 2) / (offset / 2);
+			list.push(val);
+		}
+		animator = new Animator(list, delay);
+	} else {
+		console.log("Invalid range mode!");
+	}
+}
+
 function sortList() {
 	var selectionList = document.getElementById("algorithm");
 	var value = selectionList[selectionList.selectedIndex].value;
